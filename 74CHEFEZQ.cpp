@@ -20,7 +20,7 @@ void solve()
     for (i = 0; i < n_queries; i++)
     {
         if (arr[i] < k)
-        {
+        { // means if any day the no of queries is less than the k  then break.
             flag = 1;
             ans = i;
             break;
@@ -36,7 +36,7 @@ void solve()
     }
     else
     {
-        ans = n_queries + (arr[n_queries - 1] / k);
+        ans = n_queries + (arr[n_queries - 1] / k); // this if in the last the number of qurries left / k + total queries gives the day.
         cout << ans << endl;
     }
 }
