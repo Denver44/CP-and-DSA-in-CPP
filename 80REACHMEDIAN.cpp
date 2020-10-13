@@ -23,32 +23,22 @@ void solve()
     long long count = middle - median;
     count = abs(count);
     long long mid = (v1.size() / 2);
+    // this will check from 0 to mid-1 that no elemnt is bigger than median
     for (long long i = 0; i <= mid - 1; i++)
     {
         if (v1[i] > median)
         {
             count = abs(count) + abs(v1[i] - median);
-            // cout<<"1 "<<count<<endl;
         }
     }
-    //  if (count < 0)
-    // {
-    //     count *= -1;
-    // }
+    // this will check  mid+1 upto last elemnt that no element is less than median
     for (long long i = mid + 1; i < v1.size(); i++)
     {
         if (v1[i] < median)
         {
             count = abs(count) + abs(median - v1[i]);
         }
-        // cout <<"2 "<<count<<endl;
     }
-
-    // if (count < 0)
-    // {
-    //     count *= -1;
-    // }
-
     cout << abs(count) << endl;
 }
 
