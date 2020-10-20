@@ -7,7 +7,7 @@ using namespace std;
 // so we have find the frequency of the string
 //  then we have taken the min of the frequency
 //  and then multply it of the k
-// if k is grater than the map size that means the string doesnt conatin all alpahbets that time we return 0.
+// if k is grater than the map size that means the string doesnt conatin all alpahbets that time we return 0
 int main()
 {
 
