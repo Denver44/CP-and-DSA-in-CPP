@@ -2,7 +2,6 @@
 using namespace std;
 typedef long long ll;
 typedef unsigned long long ull;
-//  here untill  both list doesnt get empty we have to play.
 void solve()
 {
     ll n;
@@ -15,18 +14,18 @@ void solve()
         arr.push_back(x);
     }
     sort(arr.begin(), arr.end());
-    ll i = 0;
-    ll l = arr[0];
-    ll diff = arr[i] - i;
-    ll count = 0;
+    int i = 0;        // taking the first index;
+    int l = arr[0];   // this is the lenght
+    int diff = l - i; // if every number maintain this differnce then there is no missing elemnet.
+    int count = 0;    // this help us to count the number of missing element
     for (; i < n; i++)
     {
         if (arr[i] - i != diff)
         {
-            while (diff < arr[i] - i)
+            while (diff < arr[i] - i) // till the differnce not get normalize this loop will run
             {
-                count++;
-                diff++; // help in confition breaking
+                count++; // as many time this loop run it means that much number is missing.
+                diff++;
             }
         }
     }
