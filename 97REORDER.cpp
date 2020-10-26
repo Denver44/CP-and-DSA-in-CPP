@@ -2,32 +2,22 @@
 using namespace std;
 typedef long long ll;
 typedef unsigned long long ull;
+// either a+b == c
+//  or c - a -b ==0
+// so use 2d option as it is memory saving and time saving also.
 void solve()
 {
 
-    int n;
-    ll m;
+    int n, m;
     cin >> n >> m;
-    int *arr = new int[n];
-    for (int i = 1; i <= n; i++)
+    for (int i = 0; i < n; i++)
     {
-        cin >> arr[i];
-    }
-    int tot = 0;
-
-    for (int j = 1; j <= n; j++)
-    {
-        tot += arr[j];
+        int a;
+        cin >> a;
+        m -= a;
     }
 
-    if (tot == m)
-    {
-        cout << "YES" << endl;
-    }
-    else
-    {
-        cout << "NO" << endl;
-    }
+    (m == 0) ? cout << "YES" << endl : cout << "NO" << endl;
 }
 
 int main()
