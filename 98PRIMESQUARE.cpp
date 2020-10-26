@@ -2,11 +2,25 @@
 using namespace std;
 typedef long long ll;
 typedef unsigned long long ull;
+
+// Read the Question 
+// simple question
+//  we have to print a matrix
+//  in which each square should not be prime
+//  but the additon of each row must be prime.
+
 void solve()
 {
 
     ll n;
     cin >> n;
+
+    if (n == 2)
+    {
+        cout << "1 1\n1 1\n";
+        return;
+    }
+
     ll arr[n][n];
     for (int i = 0; i < n; i++)
     {
@@ -15,16 +29,13 @@ void solve()
             arr[i][j] = 0;
         }
     }
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n - 1; i++)
     {
         arr[i][i] = 1;
+        arr[i][i + 1] = 1;
     }
-    int k = 0;
-    for (int j = n - 1; j >= 0; j--)
-    {
-        arr[k++][j] = 1;
-    }
-
+    arr[n - 1][0] = 1;
+    arr[n - 1][n - 1] = 1;
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < n; j++)
