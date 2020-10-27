@@ -2,6 +2,9 @@
 using namespace std;
 typedef long long ll;
 typedef unsigned long long ull;
+// if we want to find the number of count which has same ratio
+//  first we should take the gcd of the x and y and the divide each x and y by there gcd.
+//after than min of width/small width and height/small height we will get the number of count whihc has the same ratio.
 void solve()
 {
 
