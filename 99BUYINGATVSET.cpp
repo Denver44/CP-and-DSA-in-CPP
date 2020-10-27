@@ -5,23 +5,12 @@ typedef unsigned long long ull;
 void solve()
 {
 
-    double a, b, x, y;
+    ll a, b, x, y;
     cin >> a >> b >> x >> y;
-    int count = 0;
-    double res = (x / y);
-    cout << res << endl;
-    for (double i = a; i >= x; i--)
-    {
-        for (double j = b; j >= y; j--)
-        {
-            double k = (i / j);
-            if (k == res)
-            {
-                count++;
-            }
-        }
-    }
-    cout << count << endl;
+    ll c = __gcd(x, y);
+    x /= c;
+    y /= c;
+    cout << min(a / x, b / y);
 }
 
 int main()
