@@ -2,8 +2,13 @@
 using namespace std;
 typedef long long ll;
 typedef unsigned long long ull;
+// This eatfest war continues till either they have the same number of chocolates so for this e use gcd greatest common divisor
+//  or atleast one of them is left with no chocolates.
+
 // Easiset problem just we have to find the common divisor where both get same.
 // x= x-y and y= y-x formula is for gcd.
+// As here it is not mention they can eat how mkuch choclates in one time
+// sow we take gcd the greatest common divisor where they get equal.
 void solve()
 {
 
