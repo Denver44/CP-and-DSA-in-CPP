@@ -3,7 +3,7 @@ using namespace std;
 typedef long long ll;
 typedef unsigned long long ull;
 // ---- Vector diff array method
-//  as her ethe number of query is repated number of times
+//  as her the number of query is repated number of times
 //  thats why we use vector diff array method
 //  after the sroting both tha array and qi=uery index
 //  and multplying arr[i] * qarr[i] and taking the sum we git the answer
