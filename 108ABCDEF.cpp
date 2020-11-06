@@ -54,6 +54,7 @@ int main()
         int ri = upper_bound(lhs.begin(), lhs.end(), rhs[i]) - lhs.begin();
         ans += (ri - li);
     }
+    // usinh lower and upper bound we find the number of frquency of elements that get same on lhs and rhs.
 
     cout << ans << endl;
 
