@@ -33,6 +33,10 @@ void solve()
         for (int i = 1; i < n; i++)
         {
             ans += dist(x[idx[i]], x[idx[i - 1]], y[idx[i]], y[idx[i - 1]]);
+
+            // as we will go linear from a to b then b to c
+            // thats  why we take loop from 1 to n
+            //  means 0 to 1 then 1 to 2 so we get the distnace
         }
         count++;
 
