@@ -36,7 +36,8 @@ void solve()
     {
         qarr[i] += qarr[i - 1];
     }
-
+    // As we waant tmaximum sum thats why we sorted it.
+    // so we can get max.
     sort(arr.begin(), arr.end());
     sort(qarr.begin(), qarr.end());
 
