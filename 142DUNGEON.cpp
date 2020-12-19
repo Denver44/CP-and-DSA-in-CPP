@@ -8,17 +8,20 @@ void solve()
 {
     int a, b, c;
     cin >> a >> b >> c;
-    int sum = (a + b + c);
-    if (sum % 9 == 0)
+    double k = (a + b + c) / 9.0;
+    if (k != (int)k)
     {
-        int minvalue = min(a, min(b, c));
-        if (minvalue > sum / 9)
+        cout << "NO" << endl;
+        return;
+    }
+    else
+    {
+        int x = min(a, min(b, c));
+        if (x >= k)
             cout << "YES" << endl;
         else
             cout << "NO" << endl;
     }
-    else
-        cout << "NO" << endl;
 }
 
 int main()
