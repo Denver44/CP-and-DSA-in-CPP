@@ -1,6 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
+// here we have the array beautiful if it one of its neighbour is divisibe by them.
+// so for this 1 is the best approach to make every number one then like 2 1 8 1
+// here 2 is neigbours is 1 and 1 neigbours 1 and 8 neighbours is also 1 so they divisble
+// now we have to make the array in such a way that sum of the new array
+// 2* ai-bi should be less than Array sum.
+// so we take evensum and oddsum and whose sum is less we make them 1 and other one as it is so that will be cancel out it.
 void solve()
 {
     ll n;
