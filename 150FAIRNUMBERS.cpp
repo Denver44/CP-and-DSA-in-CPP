@@ -13,6 +13,11 @@ void file_i_o()
 	freopen("output.txt", "w", stdout);
 #endif
 }
+
+// For Number in range of 10^18 use unsigned long long
+// It was Easy Question
+
+
 void solve()
 {
 	ull n;
