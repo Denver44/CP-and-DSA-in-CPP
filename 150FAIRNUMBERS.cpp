@@ -30,12 +30,12 @@ void solve()
 		{
 
 			ull rem = (a % 10);
-			if (rem == 0)
+			if (rem == 0) // As if its Zeros Then No nedd to check. 8/0 is infintiy
 			{
 				a = a / 10;
 				continue;
 			}
-			if (n % rem != 0)
+			if (n % rem != 0) // If it is Not Divisble By Zero thats means we need new n so we did n++
 			{
 				flag1 = true;
 				break;
