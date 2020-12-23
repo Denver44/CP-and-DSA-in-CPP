@@ -1,14 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
-typedef long long ll;
-typedef unsigned long long ull;
-
 // DeadLock Detetcion In this we have to jsut check that the graph is Cyclic or Not.
 // The Graph is Directed.
 // So here we have use the Dfs Approach Only
 // Using a Visited array and values 1 and  2 we detect that Deadlock Detetction.
 // Here 1 is Fully processed and 2 Means Processing stages
-
 class Solution
 {
 public:
