@@ -21,18 +21,28 @@ class Solution
 public:
 	int countPrimes(int n)
 	{
-		if (n == 0 || n == 1) // if 0 and 1 is Not Prime Number
-			return 0;
-		vector<bool>prime(n, true);
+		bool *prime = new bool[n + 1];
+		memset(prime, true, sizeof(bool) * n);
 		int count = 0;
-		for (int i = 2; i < n; i++)
+		for (int i = 2; i * i < n; i++)
 		{
-			if (prime[i])
-			{	count++;
-				for (int j = i * 2; j < n; j += i) // for every multiple of i we make it false.
-					prime[j] = false;
+			if (prime[i] == true)
+			{
+				for (int p = i * i; p < n; p = p + i)
+				{
+					prime[p] = false;
+				}
 			}
 		}
+
+		for (int i = 2; i < n; i++)
+		{
+			if (prime[i] == true)
+			{
+				count++;
+			}
+		}
+
 		return count;
 	}
 };
