@@ -16,7 +16,7 @@ void file_i_o()
 vector<int> primeNumbersTillN(int N)
 {
 	vector<bool>isthisPrimeNumber(N + 1, true);
-	for (int i = 2; i * i <= N; ++i)
+	for (int i = 2; i <= sqrt(N); ++i)
 	{
 		if (isthisPrimeNumber[i])
 			for (int j = i * 2; j <= N; j += i)
