@@ -17,6 +17,9 @@ void file_i_o()
 	freopen("output.txt", "w", stdout);
 #endif
 }
+// Using The Prefix sum Algorithm we have solved this Problem .
+// The Space Complexity is also O(1).
+// The Time COmplexity is O(N).
 class Solution
 {
 public:
