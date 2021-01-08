@@ -114,8 +114,6 @@ int main()
 // 		log("Alice")
 // 	}
 // 	else
-// 	{
 // 		log("Alice");
-// 	}
 
 // }
