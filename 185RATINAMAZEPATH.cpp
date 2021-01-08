@@ -25,19 +25,8 @@ void helper(int n, int m[MAX][MAX], int i, int j, int desti, int destj, vector<v
 
 	if (i == desti && j == destj)
 	{
-		// visited[i][j] = true;
-		cout << psf << endl;
-		for (int x = 0; x < visited.size(); x++)
-		{
-			for (int y = 0; y < visited.size(); y++)
-			{
-				cout << visited[x][y] << " ";
-			}
-			cout << endl;
-		}
-		cout << endl;
-		// visited[i][j] = false;
-
+		log(psf);
+		ans.push_back(psf);
 		return;
 	}
 	visited[i][j] = true;
@@ -45,7 +34,7 @@ void helper(int n, int m[MAX][MAX], int i, int j, int desti, int destj, vector<v
 	helper(n, m, i, j - 1, desti, destj, visited, ans, psf + 'L');
 	helper(n, m, i, j + 1, desti, destj, visited, ans, psf + 'R');
 	helper(n, m, i - 1, j, desti, destj, visited, ans, psf + 'U');
-	// visited[i][j] = false; // Backtrack
+	visited[i][j] = false; // Backtrack
 }
 
 void findPath(int m[MAX][MAX], int n)
@@ -69,6 +58,6 @@ int main()
 	file_i_o();
 	int t = 1, i = 0;
 	loop(i, 0, t)
-	solve();
+		solve();
 	return 0;
 }
