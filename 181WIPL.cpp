@@ -16,6 +16,83 @@ void file_i_o()
 	freopen("output.txt", "w", stdout);
 #endif
 }
+void helper1(int h, vector<int> & arr)
+{
+
+	int index = 0, fTower = 0, count  = 0;
+	while (fTower < h  && index < arr.size() )
+	{
+		int t = -1;
+		fTower += arr[index];
+		if (fTower >= h ) {
+			index++;
+			break;
+		}
+		int j = index + 1;
+		while (arr[j] >= (h - fTower)  && j < arr.size())
+		{
+			t = 1;
+			j++;
+		}
+		if (t == 1)
+		{	swap(arr[index + 1], arr[--j]);
+			fTower += arr[index + 1];
+		}
+		else
+			fTower += arr[index + 1];
+		index += 2;
+	}
+
+	int sTower = 0;
+	while ( sTower < h && index < arr.size() )
+	{
+		int t = -1;
+		sTower += arr[index];
+		if ( sTower >= h ) {
+			index++;
+			break;
+		}
+		int j = index + 1;
+		while (arr[j] >= (h - sTower) && j < arr.size())
+		{
+			t = 1;
+			j++;
+		}
+		if (t == 1)
+		{	swap(arr[index + 1], arr[--j]);
+			sTower += arr[index + 1];
+		}
+		else
+		{sTower += arr[index + 1];}
+
+		index += 2;
+	}
+	log(index);
+}
+
+bool helper(int target, vector<int> & arr)
+{
+	vector<vector<bool>>dp (arr.size() + 1, vector<bool>(target + 1, false));
+	for (int i = 0; i < dp.size(); ++i)
+		dp[i][0] = true;
+
+	int n = arr.size();
+	for (int i = 1; i <= n ; ++i)
+	{
+		for (int j = 1; j <= target; ++j)
+		{
+			if (j >= arr[i - 1])
+			{
+				dp[i][j] = (dp[i - 1][j] || dp[i - 1][j - arr[i - 1]]);
+			}
+			else
+			{
+				dp[i][j] = dp[i - 1][j];
+			}
+		}
+	}
+	return dp[n][target];
+}
 
 void solve()
 {
@@ -25,80 +102,57 @@ void solve()
 	for (auto &i : arr)
 		cin >> i;
 	int sum = accumulate(arr.begin(), arr.end() , 0);
+	sort(arr.rbegin(), arr.rend());
 	if (sum < (h * 2))
 	{	log(-1)
 		return;
 	}
-	else if (sum == (h * 2))
+	else if ( arr[0] > h)
 	{
-		log(n)
+		helper1( h, arr);
 		return;
+
 	}
 	else
 	{
 		int index = 0;
-		sort(arr.rbegin(), arr.rend()); // Sorted in Descending Order.
-		int fTower = 0;
-		int count  = 0;
-		while (fTower < h  && index < arr.size() )
+		int sum = 0;
+		vector<int> arr1;
+		while (index < n && sum < (h * 2))
 		{
-			int t = -1;
-			fTower += arr[index];
-			// log(fTower);
-			if (fTower >= h )
-			{index++; break;}
-			int j = index + 1;
-			while (arr[j] >= (h - fTower)  && j < arr.size())
+			arr1.push_back(arr[index]);
+			sum += arr[index++];
+		}
+		// log(sum);
+		bool flag1 = helper(h , arr1);
+		while (index < n)
+		{
+			if (flag1 == true) {
+				log(index);
+				return;
+			}
+			else if (flag1 == false)
 			{
-				t = 1;
-				j++;
+				// log("Hello")
+				arr1.push_back(arr[index++]);
+				int i;
+				loop( i, 0, arr1.size())
+				log(arr1[i]);
+				flag1 = helper(h , arr1);
 			}
-			if (t == 1)
-			{	swap(arr[index + 1], arr[--j]);
-				fTower += arr[index + 1];
-			}
-			else
-				fTower += arr[index + 1];
-			index += 2;
-			// log(fTower);
 
 		}
-		// int i;
-		// loop(i, 0, arr.size())
-		// cout << arr[i] << " ";
-		// cout << endl;
-		int sTower = 0;
-		// log("-------------------")
-		while ( sTower < h && index < arr.size() )
-		{
-			int t = -1;
-			sTower += arr[index];
-			// log(sTower);
-
-			if ( sTower >= h )
-			{index++; break;}
-			int j = index + 1;
-			while (arr[j] >= (h - sTower) && j < arr.size())
-			{
-				t = 1;
-				j++;
-			}
-			if (t == 1)
-			{	swap(arr[index + 1], arr[--j]);
-				sTower += arr[index + 1];
-			}
-			else
-			{sTower += arr[index + 1];}
-
-			index += 2;
-			// log(sTower);
-
+		if (flag1 == false) {
+			log(-1);
 		}
-		log(index);
-
+		else {
+			log(index);
+		}
 	}
 
 }
+
+
 
 int main()
 {
