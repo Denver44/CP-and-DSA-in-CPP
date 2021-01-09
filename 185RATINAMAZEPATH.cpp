@@ -58,6 +58,6 @@ int main()
 	file_i_o();
 	int t = 1, i = 0;
 	loop(i, 0, t)
-		solve();
+	solve();
 	return 0;
 }
