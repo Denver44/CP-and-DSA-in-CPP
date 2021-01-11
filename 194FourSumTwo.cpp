@@ -16,6 +16,10 @@ void file_i_o()
 	freopen("output.txt", "w", stdout);
 #endif
 }
+// Here we have to return the pair whose A[i] + B[j] + C[k] + D[l] == 0.
+// Using Hashmap we Solve this Problem in O(N^2)
+// It is unorderd_map so insertion seraching take 0(1) time
+
 class Solution {
 public:
 	int fourSumCount(vector<int>& A, vector<int>& B, vector<int>& C, vector<int>& D) {
