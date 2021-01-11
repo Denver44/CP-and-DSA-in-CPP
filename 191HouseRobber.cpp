@@ -17,6 +17,10 @@ void file_i_o()
 #endif
 }
 
+// Dp - Greedy Question Include Exclude
+// Here we have two choose houses which are not adjacent to each other so we used this technique of include and Exclude.
+
+
 class Solution {
 public:
 	int rob(vector<int>& nums) {
