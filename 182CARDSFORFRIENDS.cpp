@@ -31,22 +31,21 @@ void solve()
 	}
 	else
 	{
-		int countw = 1, counth = 1;
-		while (h % 2 == 0 )
-		{
+		int count = 1;
+		while (h % 2 == 0 ) {
 			h /= 2;
-			counth *= 2; // Everytime we get double by cutting it.
+			count *= 2;
 		}
-		while (w % 2 == 0)
-		{
+		while (w % 2 == 0) {
 			w /= 2;
-			countw *= 2;
+			count *= 2;
 		}
-
-		if (counth * countw >= n)
-		{log("YES");}
-		else
-		{log("NO");}
+		if (count >= n) {
+			log("YES");
+		}
+		else {
+			log("NO");
+		}
 	}
 }
 
