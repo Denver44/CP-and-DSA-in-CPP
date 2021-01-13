@@ -23,7 +23,7 @@ void file_i_o()
 
 class Solution {
 public:
-	solve(vector<vector<int> > &A);
+	int solve(vector<vector<int> > &A);
 };
 
 
