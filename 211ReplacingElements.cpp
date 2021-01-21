@@ -62,7 +62,6 @@ void solve()
 				return;
 
 			}
-
 		}
 
 	}
