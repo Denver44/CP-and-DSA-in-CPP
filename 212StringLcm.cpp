@@ -16,7 +16,9 @@ void file_i_o()
 	freopen("output.txt", "w", stdout);
 #endif
 }
-
+// In this we have to return a lcm of string
+// So we take out the lcm by using formula (a*b)/ gcd(a,b);
+// So we have get the length will be lcm.
 void solve()
 {
 	string s, t;
@@ -33,19 +35,19 @@ void solve()
 		return;
 	}
 
-	int lcm = (a * b) / __gcd(a, b); /// we taken out the lcm
-	string spart = "";
+	int lcm = (a * b) / __gcd(a, b);
+	string ans = ""; // the lcm string of length lcm.
 	int k = 0;
 	for (int i = 0; i < lcm; ++i)
 	{
-		spart += s[k++];
+		ans += s[k++];
 		k %= a;
 
 	}
 	k = 0;
 	for (int i = 0; i < lcm; ++i)
 	{
-		if (spart[i] != t[k++])
+		if (ans[i] != t[k++])
 		{
 			log(-1);
 			return;
@@ -53,7 +55,7 @@ void solve()
 		k %= b;
 
 	}
-	log(spart);
+	log(ans);
 
 }
 
