@@ -36,15 +36,14 @@ void solve()
 		s2 = s2 + arr[i - 1];
 		s1 = s1 + arr[i - 1];
 		if ((arr[i] / s1) > (k / 100.0)) {
-			long double s = (arr[i] * (1.0 * 100)) /  k - s1;
-			s = ceil(s);
+			long int s = (arr[i] * (1.0 * 100)) /  k - s1;
+			s = s;
 			s1 = s1 + s;
 		}
 
 	}
 	log((long long int)(s1 - s2));
 }
-
 
 int main()
 {
