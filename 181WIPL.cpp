@@ -71,3 +71,50 @@ int main()
 	return 0;
 }
 
+// ----------------------------------------- Memoization Using pair Partially Correct -----------------
+map<pair<int, int>, int> memo;
+
+int solve( vector<int> & arr , int height, int h1, int h2 , int i)
+{
+	pair<int, int> m (i, h1);
+	int n =  arr.size();
+	if (h1 >= height)
+	{
+		if (h2 >= height) {
+			return i;
+		}
+		return 1e9;
+	}
+
+
+	if (i >= n) {
+		return 1e9;
+	}
+	if (memo.find(m) != memo.end()) {
+		return  memo[m];
+	}
+
+	return memo[m] =  min(solve(arr, height, h1 + arr[i] , h2 , i + 1) , solve(arr, height, h1 , h2 + arr[i], i + 1));
+}
+
+void solve()
+{
+	int n, h;
+	cin >> n >> h;
+	vector<int> arr(n);
+	for (int i = 0; i < n; i++)
+		cin >> arr[i];
+
+	sort(arr.begin(), arr.end(), greater<int>());
+	int res = solve(arr, h, 0, 0, 0);
+	if ( res == 1e9) {
+		log(-1)
+	}
+	else {
+		log(res)
+	}
+
+	memo.clear();
+
+}
+
