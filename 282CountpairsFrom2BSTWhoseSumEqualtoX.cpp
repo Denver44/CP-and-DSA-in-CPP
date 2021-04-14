@@ -16,37 +16,40 @@ void file_i_o()
 #endif
 }
 
-class Solution {
-public:
-	TreeNode* helper(TreeNode *root, int x ) {
 
-		if (root == NULL) {
-			TreeNode* temp = new  TreeNode(x);
-			return temp;
+void helper(Node* root, unordered_set<int> &s1)
+{
+	if (!root)
+		return;
+	helper(root->left, s1);
+	s1.insert(root->data);
+	helper(root->right, s1);
+}
+
+
+int countPairs(Node* root1, Node* root2, int x)
+{
+	unordered_set<int> s1, s2;
+	helper(root1, s1);
+	helper(root2, s2);
+	int ans = 0;
+
+	for (auto i : s1) {
+		if (s2.find(x - i) != s1.end()) {
+			ans++;
+			s2.erase(x - i);
 		}
-
-		if (root->val > x) {
-			root->left = helper(root->left, x );
-		} else {
-			root->right = helper(root->right, x );
-		}
-		return root;
 	}
-	TreeNode* bstFromPreorder(vector<int>& preorder) {
+	return ans;
+}
 
-		TreeNode* root = NULL;
-		for (auto x : preorder)
-			root =	helper(root, x);
-		return root;
-	}
-};
 
 void solve() {}
+
 int main()
 {
 	file_i_o();
 	int t = 1;
-	cin >> t;
 	for (int i = 0; i < t; i++)
 	{
 		solve();

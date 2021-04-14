@@ -16,37 +16,28 @@ void file_i_o()
 #endif
 }
 
-class Solution {
-public:
-	TreeNode* helper(TreeNode *root, int x ) {
+void helper(Node *root, int l, int h , int &c)
+{
+	if (!root) return;
+	if (root->data >= l && root->data <= h) c++;
+	if (l < root->data)
+		helper(root->left, l, h , c);
+	if (h > root->data)
+		helper(root->right, l, h , c);
+}
 
-		if (root == NULL) {
-			TreeNode* temp = new  TreeNode(x);
-			return temp;
-		}
-
-		if (root->val > x) {
-			root->left = helper(root->left, x );
-		} else {
-			root->right = helper(root->right, x );
-		}
-		return root;
-	}
-	TreeNode* bstFromPreorder(vector<int>& preorder) {
-
-		TreeNode* root = NULL;
-		for (auto x : preorder)
-			root =	helper(root, x);
-		return root;
-	}
-};
+int getCount(Node *root, int l, int h)
+{
+	int count = 0;
+	helper(root,  l, h , count);
+	return count;
+}
 
 void solve() {}
 int main()
 {
 	file_i_o();
 	int t = 1;
-	cin >> t;
 	for (int i = 0; i < t; i++)
 	{
 		solve();

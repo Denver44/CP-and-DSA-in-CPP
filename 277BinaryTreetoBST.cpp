@@ -18,26 +18,40 @@ void file_i_o()
 
 class Solution {
 public:
-	TreeNode* helper(TreeNode *root, int x ) {
+	vector<int> preorder;
+	void helper (Node *root)
+	{
+		if (root == NULL)
+			return;
+		preorder.push_back(root->data);
+		helper (root->left);
+		helper (root->right);
+	}
+
+	Node* helper2(Node *root, int x ) {
 
 		if (root == NULL) {
-			TreeNode* temp = new  TreeNode(x);
+			Node* temp = new  Node(x);
 			return temp;
 		}
-
-		if (root->val > x) {
-			root->left = helper(root->left, x );
+		if (root->data > x) {
+			root->left = helper2(root->left, x );
 		} else {
-			root->right = helper(root->right, x );
+			root->right = helper2(root->right, x );
 		}
 		return root;
 	}
-	TreeNode* bstFromPreorder(vector<int>& preorder) {
-
-		TreeNode* root = NULL;
+	Node* bstFromPreorder() {
+		Node* root = NULL;
 		for (auto x : preorder)
-			root =	helper(root, x);
+			root =	helper2(root, x);
 		return root;
+	}
+	Node *binaryTreeToBST (Node *root)
+	{
+		helper(root);
+		Node *newroot = bstFromPreorder();
+		return newroot;
 	}
 };
 

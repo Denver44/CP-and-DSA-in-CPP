@@ -15,38 +15,33 @@ void file_i_o()
 	freopen("output.txt", "w", stdout);
 #endif
 }
-
-class Solution {
+class Solution
+{
 public:
-	TreeNode* helper(TreeNode *root, int x ) {
 
-		if (root == NULL) {
-			TreeNode* temp = new  TreeNode(x);
-			return temp;
-		}
-
-		if (root->val > x) {
-			root->left = helper(root->left, x );
-		} else {
-			root->right = helper(root->right, x );
-		}
-		return root;
+	void helper(Node *root, int K, priority_queue<int, vector<int>, greater<int>> &pq)
+	{
+		if (root == NULL || pq.size() > K)
+			return;
+		helper(root->right, K, pq);
+		pq.push(root->data);
+		helper(root->left, K, pq);
 	}
-	TreeNode* bstFromPreorder(vector<int>& preorder) {
-
-		TreeNode* root = NULL;
-		for (auto x : preorder)
-			root =	helper(root, x);
-		return root;
+	int kthLargest(Node *root, int K)
+	{
+		priority_queue<int, vector<int>, greater<int>> pq;
+		helper(root, K, pq);
+		return pq.top();
 	}
+
 };
 
 void solve() {}
+
 int main()
 {
 	file_i_o();
 	int t = 1;
-	cin >> t;
 	for (int i = 0; i < t; i++)
 	{
 		solve();
