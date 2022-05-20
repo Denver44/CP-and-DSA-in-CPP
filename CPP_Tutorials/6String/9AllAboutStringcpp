@@ -1,0 +1,76 @@
+#include <bits/stdc++.h>
+using namespace std;
+// #include <cctype> // isspace() is defined in this cctype lib which checks for the whitespaces character
+
+void removeWhiteSpaces()
+{
+    // string name = {" HELLO   \n\n WORLD   "};
+    string name = {" HELLO       WORLD   "};
+
+    cout << "This is with the white spaces  " << endl;
+    cout << name << endl;
+    name.erase(std::remove_if(name.begin(), name.end(), ::isspace), name.end()); // must include the std before the remove_if and access operator with isspace.
+    cout << "After removing the white spaces" << endl;
+    cout << name << endl;
+}
+
+void stringLowerAndUpperCase()
+{
+    // str is the string which is converted to uppercase
+    string str = "King Khan";
+
+    // using transform() function and ::toupper in STL
+    transform(str.begin(), str.end(), str.begin(), ::toupper);
+    cout << str << endl;
+
+    // str2 is the string which is converted to lowercase
+    string str2 = "BADBOY";
+
+    // using transform() function and ::tolower in STL
+    transform(str2.begin(), str2.end(), str2.begin(), ::tolower);
+    cout << str2 << endl;
+}
+
+int countwords(string s)
+{
+    // it count the word by sapces.
+    stringstream str(s); // only pass the stringstream function.
+    string word;
+    int count = 0;
+    while (str >> word)
+        count++;
+    return count;
+}
+
+void stringToInteger()
+{
+    int n = 12345;
+    ostringstream str1; // this help us to make a integer to a string
+    str1 << n;
+    string s = str1.str(); // .str() is function which make the character sequence in array.
+}
+
+void stringToIntTypeCast()
+{
+    int j = s.size(), sum = 0;
+    for (int i = 0; i < j; i++)
+    {
+        int p = (int)s[i]; // type casting here. as for this example it
+        p = p - 48;        // subtracting as ascii code of 0 is 48.
+        sum = sum + p;
+    }
+    cout << sum;
+}
+
+int main()
+{
+
+    string s = "Denver Rio Tokyo";
+    cout << "number of words: " << countwords(s) << endl;
+    stringLowerAndUpperCase();
+    removeWhiteSpaces();
+    stringToInteger(); // String to Integer
+    stringToIntTypeCast();
+
+    return 0;
+}
